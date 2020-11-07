@@ -83,6 +83,31 @@ Data types include Booleans, integers, and varying characters (i.e., within a st
 
 There are three types of ERDs: **conceptual, logical,** and **physical**. Each one builds upon the other—you need the conceptual ERD to build a logical ERD to build a physical ERD. We'll learn how to create ERDs later in this module.
 
+## IMPORTANT TO KNOW
+
+### Conceptual Diagrams
+A conceptual diagram is an ERD in its simplest form. To create one, we only need two things: a table name and column headers.
+
+It's simple because we're creating just the concept of the diagram. By covering only the basics, it's easier to capture the main points. If we tried to capture everything at once (data types, location of the primary and foreign keys, etc.), we're more likely to overlook a crucial item.
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/s10.PNG?raw=true)
+
+### Logical Diagrams
+Logical diagrams contain all of the same information that a conceptual diagram does, but the table is updated to include data types and primary keys.
+
+Returning to the Quick DBD webpage, let's update our schema. Because we already took an initial look at the worksheet, we have already identified the primary key and know what type of data we're working with. Using the following syntax, update our Departments schema:
+
+Add "varchar pk" to dept_no.
+Add "varchar" to dept_name.
+We use varchar (Links to an external site.) in these columns because the fields contain characters of varying length. Adding "pk" in the schema next to column indicates that column as a primary key. The table updated to reflect the changes in the text editor. A key symbol appears next to the dept_no line, indicating that it is the table's primary key, and varchar is added to indicate its type.
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/s9.PNG?raw=true)
+
+### Physical Diagrams
+Physical diagrams portray the physical relationship, or how the data is connected, between each table. There are several different relationships available to keep in mind when making these connections, as shown below:
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/s8.PNG?raw=true)
+
 
 
 ## Deliverable 1:  The Number of Retiring Employees by Title
