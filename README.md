@@ -1,16 +1,13 @@
 # Pewlett Hackard Analysis
 
-**Data Analyst at PyBer**
-Create line, bar, scatter, bubble, pie, and box-and-whisker plots using Matplotlib. And determine mean, median, and mode using Pandas, NumPy, and SciPy statistics.
-
 ## Overview of Project
-PyBer CEO has given you and your manager a brand-new assignment. Using your Python skills and knowledge of Pandas, you’ll create a summary DataFrame of the ride-sharing data by city type. Then, using Pandas and Matplotlib, you’ll create a multiple-line graph that shows the total weekly fares for each city type. 
+Now that Bobby has proven his SQL chops, his manager has given both of you two more assignments: determine the number of retiring employees per title, and identify employees who are eligible to participate in a mentorship program. Then, you’ll write a report that summarizes your analysis and helps prepare Bobby’s manager for the “silver tsunami” as many current employees reach retirement age. 
 
 > Finally, you’ll submit a written report that summarizes how the data differs by city type and how those differences can be used by decision-makers at PyBer.
 
-1. ***Deliverable 1***: A ride-sharing summary DataFrame by city type
-2. ***Deliverable 2***: A multiple-line chart of total fares for each city type
-3. ***Deliverable 3***: A written report for the PyBer analysis [`README.md`](https://github.com/emmanuelmartinezs/PyBer_Analysis). 
+1. ***Deliverable 1***: The Number of Retiring Employees by Title
+2. ***Deliverable 2***: The Employees Eligible for the Mentorship Program
+3. ***Deliverable 3***: A written report on the employee database analysis [`README.md`](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis). 
 
 ## Resources and Before Start Notes:
 
@@ -20,97 +17,91 @@ PyBer CEO has given you and your manager a brand-new assignment. Using your Pyth
 
 For more information, read the [`Documentation on Python data typess`](https://docs.python.org/3.6/library/stdtypes.html#numeric-types-int-float-complex). 
 
-## Check the Version of Matplotlib
-Before we get started on any project, it's good practice to make sure we have the latest version of the software we'll be using. Because we'll be using Matplotlib, let's check to make sure we have version 3.1.0 or greater
-Follow the instructions below for your operating system.
+## Database Keys
+Database keys identify records from tables and establish relationships between tables. There are numerous types of keys. For our purposes, we will focus on primary keys and foreign keys.
 
-**Check the Version on the Command Line in macOS or Windows**
-To begin, launch the command line and activate the PythonData environment.
+## Primary Keys
+The departments.csv file has a dept_no column with unique identifiers for each row (one department number per department). For example, d001 will always reference the Marketing department, across other worksheets. This unique identifier is known as a primary key.
 
-To activate the **PythonData** environment on the command line, type `conda activate PythonData`.
+Primary keys are an important part of database design. When a database is being created, each table added must include a primary key in the architecture. Primary keys serve as a link between these tables.
 
-**macOS look similar to this:**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/Pyvr1.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s1.PNG?raw=true)
 
 
-**Windows look similar to this:**
+In the graphic above, Table 1 has a primary key, or column of unique identifiers in common with Tables 2 and 4. Table 3's primary key is linked only to Table 2. These links trace the relationships between tables. There are times when we'll need to trace two or three links to get the exact data we need. In these cases, we'll pick the data we need from each table. Linking the tables together in this manner is called a join, a feature we'll get into later.
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/Pyvr2.PNG?raw=true)
+In the second CSV file, `dept_emp.csv`, the "emp_no" column contains the primary key.
 
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s2.PNG?raw=true)
 
-At the Python prompt ( >>>), type import matplotlib and press Enter to import Matplotlib.
+We know this is the primary key because each number is unique. For example, the emp_no column holds employee numbers. Each employee will have only one number, and that number won't be used for any other employee.
 
-Next, to check the version of Matplotlib, type `matplotlib.__version__` (there are two underscores before and after "version") and press Enter
-The output should be 3.1.0 or greater.
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s3.PNG?raw=true)
 
-**Extra Note:** 
+Open that file and take an initial look at the data.
 
-To update Matplotlib for your development environment; with your PythonData environment activated, type `conda install -c conda-forge matplotlib` at the command prompt and press Enter.
+## Foreign Keys
+Foreign keys are just as important as primary keys. While primary keys contain unique identifiers for their dataset, a **foreign key** references another dataset's primary key.
 
-In Jupyter Notebook, create a new file if one hasn't been created. Add the following code to a new cell.
+Think about it like a phone number. You have your own number. It's your number, assigned to your phone, and unique to you. This is your primary key. Your friend also has a primary key: his or her own phone number.
 
-**Check the Version in Jupyter Notebook**
-Alternatively, you can check the version of Matplotlib in Jupyter Notebook. To do that, follow these directions
+When you save your friend's number in your phone, you're creating a reference to that person, also known as a foreign key. Your phone has lots of foreign keys (such as parents, doctors offices, friends, and other family), but only one primary key.
 
-To start Jupyter Notebook, navigate to the Class folder on your computer using the command line or Anaconda prompt.
+Likewise, when your friend saves your number in their phone, your number is now a foreign key in their phone. Saving these keys connects the devices. They show the relationship between your phone and your friend's phone.
 
-Activate the PythonData environment if it's not activated. Type and run `jupyter notebook`.
+Compare our first two CSVs again by looking at the following image.
 
-**From Anaconda Terminal:**
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s4.PNG?raw=true)
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/jpvr1.PNG?raw=true)
+In this example, dept_no shows up in both datasets; as an identifier (or primary key) in one and as a reference (or foreign key) in the other. This demonstrates the link between employees and which department they work in.
 
-**From Jupyter Notebook Data:**
+We could continue to look for connections between the datasets, or we could create a roadmap of the content. Our roadmap would serve as a quick reference diagramming the different datasets and their interconnections. Additionally, it could be used as a reference guide later, when we begin to create queries to access all of the data.
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/jpvr2.PNG?raw=true)
+## Table Structure
+When working in Excel and Visual Basic for Applications (VBA), we're working directly with worksheets with data. In SQL, the same worksheets we have been exploring are organized into tables instead. They are similar to DataFrames in that they have headers and indexes, with data in columns and rows. Take a look at the following images.
 
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s5.PNG?raw=true)
 
-For more information about the latest Matplotlib version, see the Matplotlib documentation [Links to an external site.](https://matplotlib.org/3.1.0/index.html). 
+Next we'll cover how table structure comes into play when creating an entity relationship diagram.
 
+## Entity Relationship Diagrams (ERDs)
+An entity relationship diagram (ERD) is a type of flowchart that highlights different tables and their relationships to each other. The ERD does not include any actual data, but it does capture the following pertinent information from each CSV file:
 
-**Matplot over Jupyter Note:**
-Here a Simple Example how it looks a `Matplotlib.pyplot` chart:
+* Primary keys
+* Foreign keys
+* Data types for each column
 
-**Code and Graph**
+The ERD also shows the flow of information from one table to another, as captured in the image below:
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/chartsample1.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s6.PNG?raw=true)
 
+In addition to creating new databases, ERDs are used to document existing databases. The visual representation of the tables gives a deeper understanding of the data and the database as a whole.
 
+When creating a diagram, we need to fully understand all of the data being inserted. Database components include tables, known as **entities**, with data, known as **attributes**.
 
-**Annotate Charts Using the MATLAB Method**
-Here are a few methods that you can use to annotate charts using the MATLAB method:
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/s7.PNG?raw=true)
 
-It is highly recommended to add x-axis and y-axis labels and a title to every graph you create so the viewer knows what it conveys. If you have more than one line or bar on a graph, making each line or bar stand out with a distinct color or line style is helpful, as is adding a legend for each dataset that the lines or bars represent. In addition, thoughtfully setting your x-axis and y-axis ranges can make the data more appealing.
+Data types include Booleans, integers, and varying characters (i.e., within a string).
 
-**Matplotlib Functions and Feature**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/MatplotlibFunc.PNG?raw=true)
-
-
-**Extra Note: Create a Vertical Bar Chart**
-
-To create a bar chart using the object-oriented interface method, use the `ax.bar()` function and add the x and y data parameters inside the parentheses.
-
-**Matplotlib Functions and Feature**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/VertBarChartExample.PNG?raw=true)
+There are three types of ERDs: **conceptual, logical,** and **physical**. Each one builds upon the other—you need the conceptual ERD to build a logical ERD to build a physical ERD. We'll learn how to create ERDs later in this module.
 
 
-## Deliverable 1:  A Ride-Sharing Summary DataFrame by City Type
+
+## Deliverable 1:  The Number of Retiring Employees by Title
 ### Deliverable Requirements:
+Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a Retirement Titles table that holds all the titles of current employees who were born between January 1, 1952 and December 31, 1955. Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the `DISTINCT ON` statement to create a table that contains the most recent title of each employee. Then, use the `COUNT()` function to create a final table that has the number of retirement-age employees by most recent job title.
 
-1. The total number of rides for each city type is retrieved. 
-2. The total number of drivers for each city type is retrieved.
-3. The sum of the fares for each city type is retrieved.
-4. The average fare per ride for each city type is calculated.  
-5. The average fare per driver for each city type is calculated. 
-6. A PyBer summary DataFrame is created.
-7. The PyBer summary DataFrame is formatted as shown in the example.
+1. A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955 
+2. The Retirement Titles table is exported as `retirement_titles.csv`
+3. ​A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title.
+4. The Unique Titles table is exported as `unique_titles.csv`  
+5. A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring. 
+6. The Retiring Titles table is exported as `retiring_titles.csv`
+
  
 ### Results with detail analysis:
 
-**1. The total number of rides for each city type is retrieved.**
+**1. A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955.**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -118,7 +109,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.1.PNG?raw=true)
 
-**2. The total number of drivers for each city type is retrieved.**
+**2. The Retirement Titles table is exported as `retirement_titles.csv`**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -126,7 +117,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.2.PNG?raw=true)
 
-**3. The sum of the fares for each city type is retrieved.**
+**3. ​A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title.**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -134,7 +125,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.3.PNG?raw=true)
 
-**4. The average fare per ride for each city type is calculated.**
+**4. The Unique Titles table is exported as `unique_titles.csv`**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -142,7 +133,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.4.PNG?raw=true)
 
-**5. The average fare per driver for each city type is calculated.**
+**5. A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring.**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -150,7 +141,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.5.PNG?raw=true)
 
-**6. A PyBer summary DataFrame is created.**
+**6. The Retiring Titles table is exported as `retiring_titles.csv`**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -158,29 +149,20 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.6.PNG?raw=true)
 
-**7. The PyBer summary DataFrame is formatted as shown in the example.**
-
-> Image with `Jupyter Notebook` & `Python` Code below.
-
-**Code and Image**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.7.PNG?raw=true)
 
 
 
-### Deliverable 2: A multiple-line chart of total fares for each city type
+### Deliverable 2: The Employees Eligible for the Mentorship Program
 ### Deliverable Requirements:
+Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
 
-1. A DataFrame was created using the `groupby()` function on the "type" and "date" columns, and the `sum()` method is applied on the "fare" column to show the total fare amount for each date and time.
-2. A DataFrame was created using the `pivot()` function where the index is the "date," the columns are the city "type," and the values are the "fare."
-3. A DataFrame was created using the `loc` method on the date range: 2019-01-01 through 2019-04-29.
-4. A DataFrame was created using the `resample()` function in weekly bins and shows the sum of the fares for each week.
-5. An annotated chart showing the total fares by city type is created and saved to the "analysis" folder. 
+1. A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965.
+2. The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`
 
 
 ### Results with detail analysis:
 
-**1. A DataFrame was created using the `groupby()` function on the "type" and "date" columns, and the `sum()` method is applied on the "fare" column to show the total fare amount for each date and time.**
+**1. A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965.**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -188,7 +170,7 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1.PNG?raw=true)
 
-**2. A DataFrame was created using the `pivot()` function where the index is the "date," the columns are the city "type," and the values are the "fare."**
+**2. The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`"**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -196,43 +178,19 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.2.PNG?raw=true)
 
-**3. A DataFrame was created using the `loc` method on the date range: 2019-01-01 through 2019-04-29.**
-
-> Image with `Jupyter Notebook` & `Python` Code below.
-
-**Code and Image**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.3.PNG?raw=true)
-
-**4. A DataFrame was created using the `resample()` function in weekly bins and shows the sum of the fares for each week.**
-
-> Image with `Jupyter Notebook` & `Python` Code below.
-
-**Code and Image**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.4.PNG?raw=true)
-
-**5. An annotated chart showing the total fares by city type is created and saved to the "analysis" folder.**
-
-> Image with `Jupyter Notebook` & `Python` Code below.
-
-**Code and Image**
-
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.5.PNG?raw=true)
 
 
-
-## Deliverable 3: A written report for the PyBer Analysis
+## Deliverable 3: A written report on the employee database analysis
 ### The analysis should contain the following:
 
 1. **Overview of the analysis** 
-* Explain the purpose of the new analysis:
+* Explain the purpose of this analysis.:
 
     > The purpose of this written report for Data Analyst at PyBer is to create a complete summary of the Ride-Sharing data by city type. Including a quick summary of line, bar, scatter, bubble, pie, and box-and-whisker plots using Matplotlib libraries. And determine mean, median, and mode using Pandas, NumPy, and SciPy statistics. Our Final Analysis include multiple-line graphs of total weekly fares for each city type.
 
 
 2. **Results** 
-* Using images from the summary DataFrame and multiple-line chart, describe the differences in ride-sharing data among the different city types:
+* Provide a bulleted list with four major points from the two analysis deliverables. Use images as support where needed:
 
     > * The Suburban fares started around $1,000, and the analysis was not profitable, fare dropped in March and in mid-April.  
     > * The Rural fares started at around $200, the analysis shows fares increase and dropped till the end of April.  
@@ -248,22 +206,18 @@ To create a bar chart using the object-oriented interface method, use the `ax.ba
     ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/analysis/Fig1.png?raw=true)      
 
 3. **Summary** 
-* Based on the results, provide three business recommendations to the CEO for addressing any disparities among the city types:
+* Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami.":
 
-    > **1)** From our analysis, we can predict that there are good opportunities to expand the business in rural and suburban cities, including hiring drivers to operate and explode business in rural and suburban cities.
+    > **1)** How many roles will need to be filled as the "silver tsunami" begins to make an impact?.
 
     > % of Total Drivers by City Type,
     ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/analysis/Fig7.png?raw=true)
     
-    > **2)** The Urban cities fare is the highest and consistent, giving us great and new business opportunities to expand rides.  
+    > **2)** TAre there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?  
 
     > % of Total Fares by City Type, 
     ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/analysis/Fig5.png?raw=true)
     
-    > **3)** The Rural cities fare is the lowest of the other two city types (Urban and Suburban cities), in addition, fares never intersect.  Knowing that all fares never intersect, we can expand fares and increase business financial income to the company without affecting our rate.
+    
 
-     > Total Fare by City Type,
-    ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/analysis/PyBer_fare_summary.png?raw=true) 
-
-
-#### PyBer Analysis Completed by Emmanuel Martinez
+#### Pewlett Hackard Analysis Completed by Emmanuel Martinez
