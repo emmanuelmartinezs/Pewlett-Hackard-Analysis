@@ -250,7 +250,7 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no;
 ````
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/2.1.PNG?raw=true)
 
 2. **The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`"**
 
@@ -258,7 +258,7 @@ ORDER BY e.emp_no;
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1r.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/2.1r.PNG?raw=true)
 
 
 
