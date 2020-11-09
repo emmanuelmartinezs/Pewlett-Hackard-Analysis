@@ -224,7 +224,7 @@ Using the ERD you created in this module as a reference and your knowledge of SQ
 
 ### Results with detail analysis:
 
-**1. A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965.**
+1. **A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965.**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
@@ -232,7 +232,7 @@ Using the ERD you created in this module as a reference and your knowledge of SQ
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1.PNG?raw=true)
 
-**2. The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`"**
+2. **The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`"**
 
 > Image with `Jupyter Notebook` & `Python` Code below.
 
