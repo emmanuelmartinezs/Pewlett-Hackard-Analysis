@@ -283,7 +283,7 @@ ORDER BY e.emp_no;
     > * 4,502 Technique Leader
     > * 1,761 Assistant Engineer
     
-    > Image Below, 
+**Image Below** 
     
 ![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/3.2.PNG?raw=true)
 
