@@ -124,7 +124,7 @@ Using the ERD you created in this module as a reference and your knowledge of SQ
  
 ### Results with detail analysis:
 
-**1. A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955.**
+1. **A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955.**
 
 > Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
@@ -149,7 +149,7 @@ order by e.emp_no;
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.1.PNG?raw=true)
 
-**2. The Retirement Titles table is exported as `retirement_titles.csv`**
+2. **The Retirement Titles table is exported as `retirement_titles.csv`**
 
 > Exported `retirement_titles.csv` Image below.
 
@@ -157,7 +157,7 @@ order by e.emp_no;
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.1r.PNG?raw=true)
 
-**3. ​A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title.**
+3. ​***A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title.**
 
 > Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
@@ -177,7 +177,7 @@ ORDER BY emp_no, title DESC;
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.2.PNG?raw=true)
 
-**4. The Unique Titles table is exported as `unique_titles.csv`**
+4. **The Unique Titles table is exported as `unique_titles.csv`**
 
 > Exported `unique_titles.csv` Image below.
 
@@ -185,7 +185,7 @@ ORDER BY emp_no, title DESC;
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.2r.PNG?raw=true)
 
-**5. A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring.**
+5. **A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring.**
 
 > Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
@@ -204,7 +204,7 @@ ORDER BY COUNT(title) DESC;
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.3.PNG?raw=true)
 
-**6. The Retiring Titles table is exported as `retiring_titles.csv`**
+6. **The Retiring Titles table is exported as `retiring_titles.csv`**
 
 > Exported `retiring_titles.csv` Image below.
 
