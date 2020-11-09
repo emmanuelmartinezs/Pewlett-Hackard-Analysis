@@ -126,52 +126,91 @@ Using the ERD you created in this module as a reference and your knowledge of SQ
 
 **1. A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955.**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.1.PNG?raw=true)
+
+````SQL
+-- Follow the instructions below to complete Deliverable 1.
+SELECT e.emp_no,
+       e.first_name,
+       e.last_name,
+       t.title,
+       t.from_date,
+       t.to_date
+INTO retirement_titles
+FROM employees as e
+INNER JOIN titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+order by e.emp_no;
+````
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.1.PNG?raw=true)
 
 **2. The Retirement Titles table is exported as `retirement_titles.csv`**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Exported `retirement_titles.csv` Image below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.2.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.1r.PNG?raw=true)
 
 **3. ​A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title.**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.3.PNG?raw=true)
+
+````SQL
+-- Use Dictinct with Orderby to remove duplicate rows
+SELECT DISTINCT ON (emp_no) emp_no,
+first_name,
+last_name,
+title
+INTO unique_titles
+FROM retirement_titles
+ORDER BY emp_no, title DESC;
+````
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.2.PNG?raw=true)
 
 **4. The Unique Titles table is exported as `unique_titles.csv`**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Exported `unique_titles.csv` Image below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.4.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.2r.PNG?raw=true)
 
 **5. A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring.**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.5.PNG?raw=true)
+
+````SQL
+-- Retrieve the number of employees by their most recent job title who are about to retire.
+SELECT COUNT(ut.emp_no),
+ut.title
+INTO retiring_titles
+FROM unique_titles as ut
+GROUP BY title 
+ORDER BY COUNT(title) DESC;
+````
+
+![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.3.PNG?raw=true)
 
 **6. The Retiring Titles table is exported as `retiring_titles.csv`**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Exported `retiring_titles.csv` Image below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/1.6.PNG?raw=true)
-
+![name-of-you-image](https://github.com/emmanuelmartinezs/Pewlett-Hackard-Analysis/blob/main/Resources/Images/1.3r.PNG?raw=true)
 
 
 
