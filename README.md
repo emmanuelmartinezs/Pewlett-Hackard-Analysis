@@ -226,19 +226,39 @@ Using the ERD you created in this module as a reference and your knowledge of SQ
 
 1. **A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965.**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Image with `SQL`, `pgAdmin` & `QuickDBD` Code below.
 
 **Code and Image**
+
+
+````SQL
+-- Write a query to create a Mentorship Eligibility table that holds the employees who are eligible to participate in a mentorship program.
+SELECT DISTINCT ON(e.emp_no) e.emp_no, 
+    e.first_name, 
+    e.last_name, 
+    e.birth_date,
+    de.from_date,
+    de.to_date,
+    t.title
+INTO mentorship_eligibilty
+FROM employees as e
+Left outer Join dept_emp as de
+ON (e.emp_no = de.emp_no)
+Left outer Join titles as t
+ON (e.emp_no = t.emp_no)
+WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+ORDER BY e.emp_no;
+````
 
 ![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1.PNG?raw=true)
 
 2. **The Mentorship Eligibility table is exported and saved as `mentorship_eligibilty.csv`"**
 
-> Image with `Jupyter Notebook` & `Python` Code below.
+> Exported `retiring_titles.csv` Image below.
 
 **Code and Image**
 
-![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.2.PNG?raw=true)
+![name-of-you-image](https://github.com/emmanuelmartinezs/PyBer_Analysis/blob/main/Resources/Images/2.1r.PNG?raw=true)
 
 
 
